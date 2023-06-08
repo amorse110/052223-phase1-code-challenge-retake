@@ -2,7 +2,6 @@ const charAPI = "http://localhost:3000/characters";
 const charBar = document.getElementById('character-bar');
 document.getElementById('votes-form').addEventListener('submit', addVotes);
 let voteCount = document.getElementById('vote-count');
-let currentCharacter;
 
 fetch(charAPI)
 .then(res => res.json())
@@ -19,8 +18,8 @@ function renderName(character) {
     charName.addEventListener('click', () => renderCharDetail(character))
 }
 
-function renderCharDetail(character) {
-    currentCharacter = character;
+
+function renderCharDetail(character) {   
     const charDetail = document.getElementById('detailed-info');
     document.getElementById('name').textContent = character.name;
     const detailImage = document.getElementById('image')
@@ -32,8 +31,6 @@ function renderCharDetail(character) {
 function addVotes(event) {
     event.preventDefault();
     const form = event.target;
-    //const value = document.getElementById()
-    voteCount.textContent = form.votes.textContent + voteCount.textContent;
-    console.log(voteCount.textContent);
-    renderCharDetail();
+    const newVotes = parseInt(form.votes.value + voteCount.value);
+    voteCount.textContent = newVotes
 }

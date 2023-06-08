@@ -31,6 +31,7 @@ function renderCharDetail(character) {
 function addVotes(event) {
     event.preventDefault();
     const form = event.target;
-    const newVotes = parseInt(form.votes.value + voteCount.value);
+    const newVotes = parseInt(form.votes.value) + parseInt(voteCount.textContent);
+    console.log(form.votes.value)
     voteCount.textContent = newVotes
 }
